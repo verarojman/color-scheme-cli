@@ -1,0 +1,32 @@
+{
+  "name": "color-scheme-cli",
+  "version": "1.0.0",
+  "description": "Generate pleasant color schemes from the command line",
+  "main": "color-scheme-cli.js",
+  "scripts": {
+    "start": "color-scheme-cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vrojman/color-scheme-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vrojman/color-scheme-cli/issues"
+  },
+  "keywords": [
+    "color",
+    "cli",
+    "scheme",
+    "generator",
+    "random",
+    "picker",
+    "web"
+  ],
+  "author": "Vera Rojman",
+  "license": "MIT",
+  "dependencies": {
+    "color-scheme": "^1.0.0",
+    "commander": "^2.11.0"
+  },
+  "devDependencies": {}
+}
