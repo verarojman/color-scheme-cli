@@ -1,14 +1,6 @@
-# color-scheme.js
+# color-scheme-cli.js
 
 Generate pleasant color schemes (sets of colors).
-
-This library is based on the perl module [Color::Scheme](http://search.cpan.org/~rjbs/Color-Scheme-1.04/lib/Color/Scheme.pm), which is in turn based on the [Color Scheme Designer website](http://colorschemedesigner.com/).
-
-Check out [how it works](http://c0bra.github.com/color-scheme-js/).
-
-Get the [minified file](https://raw.github.com/c0bra/color-scheme-js/master/lib/color-scheme.min.js) (8kb).
-
-Or for some reason, you could use the [full file](https://raw.github.com/c0bra/color-scheme-js/master/lib/color-scheme.js) (18kb).
 
 ## Table of Contents
 
@@ -30,7 +22,7 @@ Or for some reason, you could use the [full file](https://raw.github.com/c0bra/c
 
 ## Description
 
-This module is a JavaScript implementation of the Perl implementation of Color Schemes
+This module is a NodeJS command line interface for the JavaScript implementation of the Perl implementation of Color Schemes
 2 ([http://wellstyled.com/tools/colorscheme2](http://wellstyled.com/tools/colorscheme2)), a color scheme generator.
 Start by visitng the Color Schemes 2 web site and playing with the colors.
 When you want to generate those schemes on the fly, begin using this modoule.
@@ -57,49 +49,13 @@ rough and sometimes may produce slightly different color."*
 Gotta install it first:
 
 ```
-npm install color-scheme
+npm install -g color-scheme-cli
+
 ```
 
-```javascript
-var ColorScheme = require('color-scheme');
-
-var scheme = new ColorScheme;
-scheme.from_hue(21)         // Start the scheme 
-      .scheme('triade')     // Use the 'triade' scheme, that is, colors
-                            // selected from 3 points equidistant around
-                            // the color wheel.
-      .variation('soft');   // Use the 'soft' color variation
-
-var colors = scheme.colors();
-
-/*
-  colors = [ "e69373", "805240", "e6d5cf", "bf5830" ,
-             "77d36a", "488040", "d2e6cf", "43bf30" ,
-             "557aaa", "405c80", "cfd9e6", "306ebf" ]
-*/
 ```
+color-scheme -s triade -d 30 -H 660bfa
 
-### In the browser
-
-```html
-<script src="wherever/your/installed/color-scheme.js"></script>
-
-<script>
-  // Pretty much the same exact syntax!
-  var scheme = new ColorScheme;
-  scheme.from_hue(21)         
-        .scheme('triade')   
-        .variation('soft');
-
-
-  var colors = scheme.colors();
-
-  /*
-    colors = [ "e69373", "805240", "e6d5cf", "bf5830" ,
-               "77d36a", "488040", "d2e6cf", "43bf30" ,
-               "557aaa", "405c80", "cfd9e6", "306ebf" ]
-  */
-<script>
 ```
 
 ## Schemes

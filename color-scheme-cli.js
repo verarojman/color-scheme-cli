@@ -1,15 +1,38 @@
+#! /usr/bin/env node
+
 var ColorScheme = require('color-scheme');
 var program = require('commander');
  
 program
   .version('0.1.0')
-  .option('-s, --scheme <scheme>', 'Scheme type (mono, contrast, triade, tetrade, analogic)')
-  .option('-v, --variation <variation>', 'Variation (default, pastel, soft, light, hard, pale)')
-  .option('-d, --distance <i>', 'Distance')
-  .option('-h, --from-hue <i>', 'From hue <hue>', parseInt)
-  .option('-H, --from-hex [value]', 'From hex [value]')
+  .option('-h, --from-hue <i>', 'From hue <hue>', clamp360)
+  .option('-H, --from-hex [value]', 'From hex [value]', validateHex)
+  .option('-s, --scheme <scheme>', 'Scheme type (mono, contrast, triade, tetrade, analogic)', validateScheme)
+  .option('-v, --variation <variation>', 'Variation (default, pastel, soft, light, hard, pale)', validateVariation)
+  .option('-d, --distance <i>', 'Distance (0-1)', clamp01)
   .parse(process.argv);
  
+function clamp01 (value) {
+	value = parseFloat(value);
+	return Math.max(Math.min(value, 1), 0);
+}
+function clamp360 (value) {
+	value = parseInt(value);
+	return (value > 360) ? value % 360 : value;
+}
+function validateHex (value) {
+	return value
+		.match(/^([0-9a-fA-F]){6}$/) ? value : null;
+}
+function validateScheme (value) {
+	return "mono contrast triade tetrade analogic"
+		.indexOf(value) >= 0 ? value : null;
+}
+function validateVariation (value) {
+	return "default pastel soft light hard pale"
+		.indexOf(value) >= 0 ? value : null;
+}
+
 
 console.log("")
 

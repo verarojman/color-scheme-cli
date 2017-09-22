@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Generate pleasant color schemes from the command line",
   "main": "color-scheme-cli.js",
+  "bin": {
+    "color-scheme": "color-scheme-cli.js"
+  },
   "scripts": {
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "start": "color-scheme-cli.js"
   },
   "repository": {
