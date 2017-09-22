@@ -1,6 +1,6 @@
 {
   "name": "color-scheme-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate pleasant color schemes from the command line",
   "main": "color-scheme-cli.js",
   "bin": {
