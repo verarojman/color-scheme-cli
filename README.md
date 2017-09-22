@@ -44,18 +44,18 @@ rough and sometimes may produce slightly different color."*
 
 ## Usage
 
-### In node.js
+### From the terminal
 
 Gotta install it first:
 
 ```
 npm install -g color-scheme-cli
-
 ```
+
+Usage example (run color-scheme -h for detailed usage options)
 
 ```
 color-scheme -s triade -d 30 -H 660bfa
-
 ```
 
 ## Schemes
@@ -78,7 +78,7 @@ Contrast supplements the selected hue with its complement (the color opposite it
 
 Triade takes the selected hue and adds two more source colors that are both a certain distance from the initial hue.
 
-The [distance()](#distancefloat) method can be used to specify how far additional source colors will be from the initial hue.
+The distance method can be used to specify how far additional source colors will be from the initial hue.
 
 12 colors will be produced.
 
@@ -92,11 +92,9 @@ Tetrade adds another yet source color, meaning four total sources.
 
 Analogic produces colors that are "analogous", or next to each other on the color wheel.
 
-Increasing the distance [distance()](#distancefloat) will push the colors away from each other. *"Values between 0.25 and 0.5 (15-30 degrees on the wheel) are optimal."*
+Increasing the distance will push the colors away from each other. *"Values between 0.25 and 0.5 (15-30 degrees on the wheel) are optimal."*
 
 12 colors will be produced.
-
-Additionally, the [complement()](#complementbool) method can be used to add complementary colors (i.e. those that are opposite the source colors on the color wheel). This will result in 16 colors. *"It must be treated only as a complement - it adds tension to the palette, and it's too aggressive when overused. However, used in details and as accent of main colors, it can be very effective and elegant."*
 
 ## Variations
 
@@ -106,94 +104,22 @@ These variations will alter the produced colors. They basically work exactly lik
 
 The default variation. No change to the colors.
 
-```javascript
-s.variation('default');
-```
-
 ### pastel
 
 Produces pastel colors, which have in HSV high value and low-intermediate saturation.
-
-```javascript
-s.variation('pastel');
-```
 
 ### soft
 
 Produces darker pastel colors.
 
-```javascript
-s.variation('soft');
-```
-
 ### light
 
 Very light, almost washed-out colors.
-
-```javascript
-s.variation('light');
-```
 
 ### hard
 
 Deeper, very saturated colors.
 
-```javascript
-s.variation('hard');
-```
-
 ### pale
 
 Colors with more gray; less saturated.
-
-```javascript
-s.variation('pale');
-```
-
-## Methods
-
-ColorScheme instances use method chaining to alter settings.
-
-### scheme([scheme_name])
-
-Set the scheme to [scheme_name]. The possible values are 'mono', 'contrast', 'triade', 'tetrade', and 'analogic'.
-
-```javascript
-var s = new ColorScheme
-
-// Set the scheme to analogic
-s.scheme('analogic');
-```
-
-### distance([float])
-
-**Note:** Only works with the schemes 'triade', 'tetrade', and 'analogic'. (Because 'mono' only has one source color, and with 'contrast' the two source colors are always 180 degrees away from each other.)
-
-This method sets the distance of the additional source colors from the initial hue. The value must be a float from 0 to 1.
-
-```javascript
-var s = new ColorScheme;
-var colors = s.scheme('triade')
- .distance(0.75)
- .colors();
-
-/*
-  colors = [ "ff9900", "b36b00", "ffe6bf", "ffcc80",
-             "00b366", "007d48", "bfffe4", "80ffc9",
-             "400099", "2d006b", "dabfff", "b580ff" ]
-*/
-```
-
-### complement([bool])
-
-Add complementary colors to the ```analogic``` scheme. Does not work with any other scheme.
-
-### colors()
-
-Returns the array of generated colors as hex values.
-
-**Note:** Because this method returns the colors, it obviously *cannot* be chained afterwards.
-
-```javascript
-var colors = s.colors()
-```
