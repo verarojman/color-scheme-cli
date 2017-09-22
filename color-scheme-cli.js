@@ -2,9 +2,10 @@
 
 var ColorScheme = require('color-scheme');
 var program = require('commander');
- 
+var fs = require('fs');
+
 program
-  .version('0.1.0')
+  .version(JSON.parse(fs.readFileSync('package.json')).version)
   .option('-h, --from-hue <i>', 'From hue <hue>', clamp360)
   .option('-H, --from-hex [value]', 'From hex [value]', validateHex)
   .option('-s, --scheme <scheme>', 'Scheme type (mono, contrast, triade, tetrade, analogic)', validateScheme)
